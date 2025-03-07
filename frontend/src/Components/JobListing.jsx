@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { assets, JobCategories, JobLocations } from "../assets/assets";
 import { AppContext } from "../Context/AppContext";
 import JobCard from "./JobCard";
+import Loading from "./Loading";
 
 const JobListing = () => {
   const { isSearched, searchFilter, setSearchFilter, jobs } =
@@ -142,9 +143,8 @@ const JobListing = () => {
           </ul>
         </div>
       </div>
-
       {/* Job Listings */}
-
+      filteredJobs ? (
       <section className="w-full lg:w-3/4 text-gray-800 max-lg:px-4">
         <h3 className="font-medium text-3xl  py-2 " id="job-list">
           Latest Jobs
@@ -201,6 +201,7 @@ const JobListing = () => {
           </div>
         )}
       </section>
+      ) : <Loading />
     </div>
   );
 };
